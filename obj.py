@@ -2,7 +2,6 @@
 # ===============================================================
 # Loads an OBJ file
 # ===============================================================
-
 class Obj(object):
     def __init__(self, filename):
         with open(filename) as f:
@@ -10,11 +9,11 @@ class Obj(object):
 
         self.vertices = []
         self.faces = []
-        self.read()
 
-    def read(self):
         for line in self.lines:
+
             if line:
+
                 if ' ' not in line:
                     continue
 
@@ -22,16 +21,16 @@ class Obj(object):
 
                 if value[0] == ' ':
                     value = '' + value[1:]
-                
+
                 if prefix == 'v':
                     self.vertices.append(
                         list(
-                        map(float, value.split(' '))
+                            map(float, value.split(' '))
                         )
                     )
 
                 if prefix == 'f':
                     self.faces.append([
                         list(map(int, face.split('/')))
-                            for face in value.split(' ') if face != ''
-                    ]) 
+                        for face in value.split(' ') if face != ''
+                    ])
