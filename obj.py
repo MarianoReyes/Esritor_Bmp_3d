@@ -1,14 +1,17 @@
+<<<<<<< HEAD
+=======
+
+# ===============================================================
+# Loads an OBJ file
+# ===============================================================
+>>>>>>> parent of d2d4eb1 (cambios)
 class Obj(object):
     def __init__(self, filename):
-
-        self.current_material = None
-
         with open(filename) as f:
             self.lines = f.read().splitlines()
 
         self.vertices = []
         self.faces = []
-        self.tvertices = []
 
         for line in self.lines:
 
@@ -22,12 +25,6 @@ class Obj(object):
                 if value[0] == ' ':
                     value = '' + value[1:]
 
-                if prefix == 'o':
-                    self.current_material = value
-
-                if prefix == 'usemtl':
-                    self.current_material = value
-
                 if prefix == 'v':
                     self.vertices.append(
                         list(
@@ -35,19 +32,8 @@ class Obj(object):
                         )
                     )
 
-                if prefix == 'vt':
-                    self.tvertices.append(
-                        list(
-                            map(float, value.split(' '))
-                        )
-                    )
-
                 if prefix == 'f':
-                    act_face = [
+                    self.faces.append([
                         list(map(int, face.split('/')))
                         for face in value.split(' ') if face != ''
-                    ]
-                    self.faces.append({
-                        'material': self.current_material,
-                        'face': act_face
-                    })
+                    ])
