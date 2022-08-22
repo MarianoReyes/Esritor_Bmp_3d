@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of d2d4eb1 (cambios)
 
-# ===============================================================
-# Loads an OBJ file
-# ===============================================================
-<<<<<<< HEAD
->>>>>>> parent of d2d4eb1 (cambios)
-=======
->>>>>>> parent of d2d4eb1 (cambios)
 class Obj(object):
     def __init__(self, filename):
         with open(filename) as f:
